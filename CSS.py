@@ -5,7 +5,7 @@ from scipy.sparse.linalg import expm
 
 from itertools import combinations
 
-filename = './data/F_CSS'
+filename = '/users/rey/raka3858/DifferentialSensingSeperable/data//F_CSS'
 
 try:
     data = np.load(filename + '.npz')
