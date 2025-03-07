@@ -74,12 +74,12 @@ for i in np.arange(0, len(S_)):
 
     te = time.time()
 
-    # if - res.fun > F[i]:
-    print('Improved from ' + str(np.round(dB(F[i]), 4)) + ' to ' + str(np.round(dB(- res.fun), 4)) + ' (dB)')
+    if - res.fun > F[i]:
+        print('Improved from ' + str(np.round(dB(F[i]), 4)) + ' to ' + str(np.round(dB(- res.fun), 4)) + ' (dB)')
 
-    phi[i] = res.x[0]
-    mu[i] = res.x[1]
-    F[i] = - res.fun
-    np.savez(filename, S=S_, phi=phi, mu=mu, F=F)
+        phi[i] = res.x[0]
+        mu[i] = res.x[1]
+        F[i] = - res.fun
+        np.savez(filename, S=S_, phi=phi, mu=mu, F=F)
 
     print('It took ' + str(round(te - ts, 4)) + 's. For S = ' + str(S))
