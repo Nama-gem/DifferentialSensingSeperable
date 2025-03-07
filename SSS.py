@@ -40,37 +40,19 @@ for i in np.arange(0, len(S_)):
     m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
     ind_rho = np.concatenate([np.array(list(combinations(np.argwhere(m == m1).ravel(), 2))) for m1 in np.arange(2 * S - 1, - 2 * S, - 1)])
 
-    res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i - 1], mu[i - 1]]), jac = True, method = method,
+    # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i - 1], mu[i - 1]]), jac = True, method = method,
+    #               bounds = Bounds([0, 0], [np.pi / 2, mu[np.max([i - 2, 0])]]))
+
+    res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i + 1], mu[i + 1]]), jac = True, method = method,
                   bounds = Bounds([0, 0], [np.pi / 2, mu[np.max([i - 2, 0])]]))
 
     # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([0.39190269, 0.1915599]), jac = True, method = method,
     #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
-    # mu[np.max([i - 2, 0])]
-    # 0.1915599
 
-    # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i - 1], mu[i - 1]]), 
-    #                jac = True, method = method, bounds = Bounds([0, 0], [np.pi / 8, mu[np.max([i - 2, 0])]]))
-
-    # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i - 1], mu[i - 1]]), 
-    #                jac = True, method = method, bounds = Bounds([0, 0], [np.pi / 8, 2E-2]))
-
-    # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i - 1], mu[i - 1]]), 
-    #                jac = True, method = method, bounds = Bounds([0, 0], [np.pi / 4, 1]))
-
-    # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i], mu[i]]),
-    #                jac=True, method=method, bounds=Bounds([0, 0], [np.pi / 4, 1]))
-
-    # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx)[0], np.array([phi[i - 1], mu[i - 1]]), 
-    #                jac = False, method = method, bounds = Bounds([0, 0], [np.pi / 8, 2E-2]))
-    print(res)
 
     # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i + 1], mu[i + 1]]), 
     #                jac = True, method = method, bounds = Bounds([0, 0], [np.pi / 8, mu[np.max([i - 2, 0])]]))
 
-    # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i + 1], mu[i + 1]]), jac = True, method = method)
-
-    # res = direct(lambda x: F_prod(x[0], oat(x[1], S, Bx)[0], oat(x[1], S, Bx)[0], basis, ind_rho)[0], 
-    #          bounds = Bounds([0, 0], [phi[np.max([i - 1, 0])], mu[np.max([i - 1, 0])]]), locally_biased = False)
 
     te = time.time()
 
