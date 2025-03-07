@@ -43,8 +43,8 @@ for i in np.arange(0, len(S_)):
     # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i - 1], mu[i - 1]]), jac = True, method = method,
     #               bounds = Bounds([0, 0], [np.pi / 8, mu[np.max([i - 2, 0])]]))
 
-    res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([0.39190269, 0.1915599]), jac = True, method = method,
-                  bounds = Bounds([0, 0], [np.pi / 4, 0.25]))
+    res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([0.78539816, 0]), jac = True, method = method,
+                  bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
     # mu[np.max([i - 2, 0])]
     # 0.1915599
 
