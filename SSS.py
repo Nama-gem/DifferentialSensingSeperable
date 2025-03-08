@@ -32,8 +32,8 @@ for i in np.arange(0, len(S_)):
 
     Bx = np.real(expm(- 1j * np.pi / 2 * sy(S).toarray()))
 
-    # method = 'L-BFGS-B'
-    method = 'SLSQP'
+    method = 'L-BFGS-B'
+    # method = 'SLSQP'
     # method = 'BFGS'
 
     basis = np.kron(Bx, Bx)
