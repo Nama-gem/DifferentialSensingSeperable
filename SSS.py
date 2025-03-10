@@ -24,7 +24,7 @@ except:
 nPhi = int(1E4)
 
 # for i in np.arange(0, len(S_)):
-for i in np.arange(0, 30):
+for i in np.arange(0, 40):
 
     S = S_[i]
 
@@ -36,6 +36,9 @@ for i in np.arange(0, 30):
     method = 'SLSQP'
     # method = 'BFGS'
 
+    tol = 1E-16
+
+
     basis = np.kron(Bx, Bx)
     m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
     ind_rho = np.concatenate([np.array(list(combinations(np.argwhere(m == m1).ravel(), 2))) for m1 in np.arange(2 * S - 1, - 2 * S, - 1)])
@@ -45,7 +48,9 @@ for i in np.arange(0, 30):
 
 
     res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i - 1], mu[i - 1]]), jac = True, method = method,
-                  bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
+                  bounds = Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
+
+    print(res.x)
 
     # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i + 1], mu[i + 1]]), jac = True, method = method,
     #               bounds = Bounds([0, 0], [np.pi / 2, mu[np.max([i - 2, 0])]]))
