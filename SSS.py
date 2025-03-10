@@ -39,7 +39,6 @@ for i in np.arange(50, 72):
 
     tol = 1E-16
 
-
     basis = np.kron(Bx, Bx)
     m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
     ind_rho = np.concatenate([np.array(list(combinations(np.argwhere(m == m1).ravel(), 2))) for m1 in np.arange(2 * S - 1, - 2 * S, - 1)])
