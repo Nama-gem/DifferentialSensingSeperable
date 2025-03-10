@@ -1,9 +1,6 @@
 import numpy as np
 from scipy import sparse
 import sys
-from qutip import *
-from scipy.sparse.linalg import expm_multiply
-import time
 
 def dB(x):
     return 10 * np.log10(x)

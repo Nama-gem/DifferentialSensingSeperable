@@ -1,5 +1,5 @@
 import time
-from scipy.optimize import minimize, Bounds, direct
+from scipy.optimize import minimize, Bounds
 from functions import *
 from scipy.sparse.linalg import expm
 
