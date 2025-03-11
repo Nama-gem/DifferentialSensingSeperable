@@ -24,7 +24,7 @@ except:
 nPhi = int(1E4)
 
 # for i in np.arange(0, len(S_)):
-for i in np.arange(50, 72):
+for i in np.arange(71, 80):
 # for i in np.arange(60, 0, - 1):
 
     S = S_[i]
