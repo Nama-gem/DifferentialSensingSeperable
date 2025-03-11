@@ -7,6 +7,8 @@ from itertools import combinations
 
 filename = ('/users/rey/raka3858/DifferentialSensingSeperable/data/SSS')
 
+print(filename)
+
 try:
     data = np.load(filename + '.npz')
     S_ = data['S']
