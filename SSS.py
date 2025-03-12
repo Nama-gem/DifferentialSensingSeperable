@@ -39,7 +39,7 @@ for i in np.arange(71, 80):
     method = 'SLSQP'
     # method = 'BFGS'
 
-    tol = 1E-16
+    # tol = 1E-16
 
     basis = np.kron(Bx, Bx)
     m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
@@ -47,9 +47,11 @@ for i in np.arange(71, 80):
 
     # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i - 1], mu[i - 1]]), jac = True, method = method,
     #               bounds = Bounds([0, 0], [np.pi / 2, mu[np.max([i - 2, 0])]]))
-
-    res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i - 1], mu[i - 1]]), jac = True, method = method,
-                  bounds = Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
+    res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho),
+                   np.array([phi[i - 1], mu[i - 1]]), jac=True, method=method,
+                   bounds=Bounds([0, 0], [np.pi / 2, 0.25]))
+    # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i - 1], mu[i - 1]]), jac = True, method = method,
+    #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
 
     # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([phi[i + 1], mu[i + 1]]), jac = True, method = method,
     #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
