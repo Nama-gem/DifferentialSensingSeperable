@@ -25,7 +25,7 @@ nPhi = int(1E4)
 
 # for i in np.arange(0, len(S_)):
 # for i in np.arange(69, len(S_)):
-for i in np.arange(72, 80):
+for i in np.arange(73, 80):
 
     S = S_[i]
 
@@ -40,18 +40,21 @@ for i in np.arange(72, 80):
 
     tol = 1E-16
 
-    basis = np.kron(Bx, Bx)
-    m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
-    ind_rho = np.concatenate([np.array(list(combinations(np.argwhere(m == m1).ravel(), 2))) for m1 in np.arange(2 * S - 1, - 2 * S, - 1)])
-
-    res = minimize(lambda x: F_prod(x[0], psi0, psi0, basis, ind_rho), phi[i - 1], jac = True,
-                   method = method, bounds = Bounds([0 * np.pi], [1 / 2 * np.pi]))
+    # basis = np.kron(Bx, Bx)
+    # m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
+    # ind_rho = np.concatenate([np.array(list(combinations(np.argwhere(m == m1).ravel(), 2))) for m1 in np.arange(2 * S - 1, - 2 * S, - 1)])
+    #
+    # res = minimize(lambda x: F_prod(x[0], psi0, psi0, basis, ind_rho), phi[i - 1], jac = True,
+    #                method = method, bounds = Bounds([0 * np.pi], [1 / 2 * np.pi]))
 
     # res = minimize(lambda x: F_prod(x[0], psi0, psi0, basis, ind_rho), phi[np.max([i + 1, 0])], jac=True,
     #                method=method, bounds=Bounds([0 * np.pi], [1 / 2 * np.pi]))
     # res = minimize(lambda x: F_prod(x[0], psi0, psi0, basis, ind_rho), np.pi / 8, jac = True, method = method, bounds = Bounds([0 * np.pi], [1 / 2 * np.pi]))
 
     # res = minimize(lambda x: F_prod_fast(x[0], psi0, psi0, nPhi, Bx), phi[np.max([i - 1, 0])], jac = True, method = method)
+
+    res = minimize(lambda x: F_prod_fast_der(x[0], psi0, psi0, nPhi, Bx), phi[i - 1], jac = True,
+                   method = method, bounds = Bounds([0 * np.pi], [1 / 2 * np.pi]))
 
     te = time.time()
 
