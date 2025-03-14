@@ -26,7 +26,7 @@ except:
 nPhi = int(1E4)
 
 # for i in np.arange(0, len(S_)):
-for i in np.arange(74, len(S_)):
+for i in np.arange(73, len(S_)):
 # for i in np.arange(60, 0, - 1):
 
     S = S_[i]
@@ -39,7 +39,7 @@ for i in np.arange(74, len(S_)):
     method = 'SLSQP'
     # method = 'BFGS'
 
-    # tol = 1E-16
+    tol = 1E-16
 
     # basis = np.kron(Bx, Bx)
     # m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
@@ -62,10 +62,9 @@ for i in np.arange(74, len(S_)):
     # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([0.39190269, 0.1915599]), jac = True, method = method,
     #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
 
-
-    res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i - 1], mu[i - 1]]),
-                   jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]))
-
+    res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx),
+                   np.array([np.exp(-0.68877735 - 0.40519728 * np.log(S)), np.exp(-0.65858885-0.7362593 * np.log(S))]),
+                   jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
 
     te = time.time()
 
