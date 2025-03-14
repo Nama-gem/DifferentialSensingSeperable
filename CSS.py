@@ -53,7 +53,7 @@ for i in np.arange(73, 80):
 
     # res = minimize(lambda x: F_prod_fast(x[0], psi0, psi0, nPhi, Bx), phi[np.max([i - 1, 0])], jac = True, method = method)
 
-    res = minimize(lambda x: F_prod_fast_der(x[0], psi0, psi0, nPhi, Bx), phi[i - 1], jac = True,
+    res = minimize(lambda x: F_prod_fast(x[0], psi0, psi0, nPhi, Bx), phi[i - 1], jac = True,
                    method = method, bounds = Bounds([0 * np.pi], [1 / 2 * np.pi]))
 
     te = time.time()
