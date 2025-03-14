@@ -26,7 +26,7 @@ except:
 nPhi = int(1E4)
 
 # for i in np.arange(0, len(S_)):
-for i in np.arange(73, len(S_)):
+for i in np.arange(74, len(S_)):
 # for i in np.arange(60, 0, - 1):
 
     S = S_[i]
@@ -63,7 +63,7 @@ for i in np.arange(73, len(S_)):
     #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
 
 
-    res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i - 2], mu[i - 2]]),
+    res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx), np.array([phi[i - 1], mu[i - 1]]),
                    jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]))
 
 
