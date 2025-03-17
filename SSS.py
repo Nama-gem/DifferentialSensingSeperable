@@ -25,6 +25,14 @@ except:
 
 nPhi = int(1E4)
 
+method = 'L-BFGS-B'
+# method = 'SLSQP'
+# method = 'BFGS'
+
+tol = None
+
+print(method)
+
 # for i in np.arange(0, len(S_)):
 for i in np.arange(72, len(S_)):
 # for i in np.arange(60, 0, - 1):
@@ -34,12 +42,6 @@ for i in np.arange(72, len(S_)):
     ts = time.time()
 
     Bx = np.real(expm(- 1j * np.pi / 2 * sy(S).toarray()))
-
-    method = 'L-BFGS-B'
-    # method = 'SLSQP'
-    # method = 'BFGS'
-
-    tol = None
 
     # basis = np.kron(Bx, Bx)
     # m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
