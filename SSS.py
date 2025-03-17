@@ -26,7 +26,7 @@ except:
 nPhi = int(1E4)
 
 # for i in np.arange(0, len(S_)):
-for i in np.arange(73, len(S_)):
+for i in np.arange(74, len(S_)):
 # for i in np.arange(60, 0, - 1):
 
     S = S_[i]
@@ -35,11 +35,11 @@ for i in np.arange(73, len(S_)):
 
     Bx = np.real(expm(- 1j * np.pi / 2 * sy(S).toarray()))
 
-    # method = 'L-BFGS-B'
-    method = 'SLSQP'
+    method = 'L-BFGS-B'
+    # method = 'SLSQP'
     # method = 'BFGS'
 
-    tol = 1E-16
+    tol = None
 
     # basis = np.kron(Bx, Bx)
     # m = np.kron(np.arange(S, - S - 1, - 1), np.ones(int(2 * S + 1))) + np.kron(np.ones(int(2 * S + 1)), np.arange(S, - S - 1, - 1))
