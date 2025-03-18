@@ -26,10 +26,10 @@ except:
 nPhi = int(1E4)
 
 method = 'L-BFGS-B'
-# method = 'SLSQP'
+method = 'SLSQP'
 # method = 'BFGS'
 
-tol = None
+tol = 1E-16
 
 print(method)
 
@@ -65,8 +65,11 @@ for i in np.arange(72, len(S_)):
     #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
 
     res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx),
-                   np.array([np.exp(-0.75263935 -0.39417549 * np.log(S)), np.exp(-0.51677849-0.76440595 * np.log(S))]),
-                   jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
+                   np.array([phi[i], mu[i]]), jac=True, method=method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol=tol)
+
+    # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx),
+    #                np.array([np.exp(-0.75263935 -0.39417549 * np.log(S)), np.exp(-0.51677849-0.76440595 * np.log(S))]),
+    #                jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
 
     te = time.time()
 
