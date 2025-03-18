@@ -65,7 +65,7 @@ for i in np.arange(72, len(S_)):
     #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
 
     res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx),
-                   np.array([np.exp(-0.68877735 - 0.40519728 * np.log(S)), np.exp(-0.65858885-0.7362593 * np.log(S))]),
+                   np.array([np.exp(-0.75263935 -0.39417549 * np.log(S)), np.exp(-0.51677849-0.76440595 * np.log(S))]),
                    jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
 
     te = time.time()
