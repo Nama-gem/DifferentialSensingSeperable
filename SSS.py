@@ -29,7 +29,7 @@ method = 'L-BFGS-B'
 method = 'SLSQP'
 # method = 'BFGS'
 
-tol = 1E-16
+tol = 1E-6
 
 print(method)
 
