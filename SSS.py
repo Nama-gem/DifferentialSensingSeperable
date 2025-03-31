@@ -34,7 +34,7 @@ tol = 1E-8
 print(method)
 
 # for i in np.arange(0, len(S_)):
-for i in np.arange(81, len(S_)):
+for i in np.arange(80, len(S_)):
 # for i in np.arange(60, 0, - 1):
 
     S = S_[i]
