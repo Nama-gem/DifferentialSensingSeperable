@@ -23,18 +23,18 @@ except:
     np.savez(filename, S = S_, phi = phi, F = F)
 
 
-nPhi = int(1E4)
+nPhi = int(5E3)
 
 method = 'L-BFGS-B'
 method = 'SLSQP'
 # method = 'BFGS'
 
-tol = 1E-6
+tol = 1E-8
 
 print(method)
 
 # for i in np.arange(0, len(S_)):
-for i in np.arange(72, len(S_)):
+for i in np.arange(81, len(S_)):
 # for i in np.arange(60, 0, - 1):
 
     S = S_[i]
