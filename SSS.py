@@ -64,12 +64,12 @@ for i in np.arange(80, len(S_)):
     # res = minimize(lambda x: F_prod_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), basis, ind_rho), np.array([0.39190269, 0.1915599]), jac = True, method = method,
     #               bounds = Bounds([0, 0], [np.pi / 2, 0.25]))
 
-    res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx),
-                   np.array([phi[i], mu[i]]), jac=True, method=method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol=tol)
-
     # res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx),
-    #                np.array([np.exp(-0.75263935 -0.39417549 * np.log(S)), np.exp(-0.51677849-0.76440595 * np.log(S))]),
-    #                jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
+    #                np.array([phi[i], mu[i]]), jac=True, method=method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol=tol)
+
+    res = minimize(lambda x: F_prod_fast_der(x[0], oat(x[1], S, Bx), oat(x[1], S, Bx), nPhi, Bx),
+                   np.array([np.exp(-0.75263935 -0.39417549 * np.log(S)), np.exp(-0.51677849-0.76440595 * np.log(S))]),
+                   jac = True, method = method, bounds=Bounds([0, 0], [np.pi / 2, 0.25]), tol = tol)
 
     te = time.time()
 
