@@ -21,11 +21,11 @@ except:
     np.savez(filename, S = S_, phi = phi, F = F)
 
 
-nPhi = int(5E3)
+nPhi = int(1E3)
 
 # for i in np.arange(0, len(S_)):
 # for i in np.arange(69, len(S_)):
-for i in np.arange(81, len(S_)):
+for i in np.arange(83, len(S_)):
 
     S = S_[i]
 
